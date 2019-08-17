@@ -41,17 +41,17 @@ public class GameScreen extends AbstractScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        placeHighlight(screenX, screenY, true);
+        placeHighlight(screenX, screenY);
         return false;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        placeHighlight(screenX, screenY, false);
+        placeHighlight(screenX, screenY);
         return false;
     }
 
-    private Position placeHighlight(float x, float y,boolean click){
+    private Position placeHighlight(float x, float y){
         Vector3 position = new Vector3(x,y,0);
         position = camera.unproject(position);
 
