@@ -34,15 +34,14 @@ public class CoordinatesHelper {
 
     public static Vector2 getTileCenter(Vector3 pt){
         Vector2 tileCenter = new Vector2(0,0);
-<<<<<<< HEAD
-        tileCenter.x = (pt.x + pt.y) * (Game.TILEWIDTH/2) - Game.TILEWIDTH/2 - 702;
-        tileCenter.y = (-pt.x + pt.y) * (Game.TILEHEIGHT/2) + Game.TILEHEIGHT/2 + 288;
+
+        tileCenter.x = (pt.x + pt.y) * (Game.TILE_WIDTH/2) - Game.TILE_WIDTH/2 - 702;
+        tileCenter.y = (-pt.x + pt.y) * (Game.TILE_HEIGHT/2) + Game.TILE_HEIGHT/2 + 288;
         Gdx.app.log("CRDS", String.format("Tile: %s , %s", pt.x, pt.y));
         Gdx.app.log("CNTR", String.format("Tile: %s , %s", tileCenter.x, tileCenter.y));
-=======
+
         tileCenter.x = (pt.x + pt.y) * (Game.TILE_WIDTH /2) + 64 -832;
         tileCenter.y = (-pt.x + pt.y) * (Game.TILE_HEIGHT /2) + 32 +288;
->>>>>>> 5baf219a79151f7756c2c18dac7797e5a928bed1
         return tileCenter;
     }
 

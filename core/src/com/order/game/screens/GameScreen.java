@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.order.game.Game;
 import com.order.game.character.Character;
+import com.order.game.character.npc.Enemy;
 import com.order.game.character.playable.Player;
 import com.order.game.map.CoordinatesHelper;
 import com.order.game.map.Position;
@@ -19,7 +19,9 @@ public class GameScreen extends AbstractScreen {
     private TiledMap tiledMap;
     private TileManager tileManager;
     private Player player;
+    private Enemy enemy;
     private Vector3 playerSpawn;
+    private Vector3 enemySpawn;
 
     Position lastTappedTile = null;
 
@@ -34,6 +36,9 @@ public class GameScreen extends AbstractScreen {
         playerSpawn = new Vector3(12,15,0);
         player = new Player (playerSpawn);
 
+        enemySpawn = new Vector3(11, 6,0);
+        enemy = new Enemy(enemySpawn);
+
         Gdx.input.setInputProcessor(this);
     }
 
@@ -46,7 +51,7 @@ public class GameScreen extends AbstractScreen {
         tiledMapRenderer.render();
 
         renderShape(player);
-
+        renderShape(enemy);
 
 
     }
@@ -62,7 +67,7 @@ public class GameScreen extends AbstractScreen {
         } else {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
             shapeRenderer.setColor(1,0,0,1);
-            shapeRenderer.rect(c.position.x/2 ,c.position.y ,64,128);
+            shapeRenderer.rect(c.position.x -32 ,c.position.y ,64,128);
             shapeRenderer.end();
         }
     }
