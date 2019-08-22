@@ -1,5 +1,6 @@
 package com.order.game.map;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.order.game.Game;
@@ -30,10 +31,12 @@ public class CoordinatesHelper {
 
     }
 
-    public static Vector2 getTileCenter(Vector2 pt){
+    public static Vector2 getTileCenter(Vector3 pt){
         Vector2 tileCenter = new Vector2(0,0);
-        tileCenter.x = (pt.x + pt.y) * (Game.TILEWIDTH/2) + 64 -832;
-        tileCenter.y = (-pt.x + pt.y) * (Game.TILEHEIGHT/2) + 32 +288;
+        tileCenter.x = (pt.x + pt.y) * (Game.TILEWIDTH/2) - Game.TILEWIDTH/2 - 702;
+        tileCenter.y = (-pt.x + pt.y) * (Game.TILEHEIGHT/2) + Game.TILEHEIGHT/2 + 288;
+        Gdx.app.log("CRDS", String.format("Tile: %s , %s", pt.x, pt.y));
+        Gdx.app.log("CNTR", String.format("Tile: %s , %s", tileCenter.x, tileCenter.y));
         return tileCenter;
     }
 

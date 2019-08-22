@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -16,6 +17,7 @@ public abstract class AbstractScreen implements Screen, InputProcessor {
     protected Game game;
     protected Stage stage;
     protected SpriteBatch spriteBatch;
+    protected ShapeRenderer shapeRenderer;
 
     TiledMapRenderer tiledMapRenderer;
     OrthographicCamera camera;
@@ -25,6 +27,7 @@ public abstract class AbstractScreen implements Screen, InputProcessor {
         createCamera();
         stage = new Stage(new StretchViewport(Game.WIDTH, Game.HEIGHT, camera));
         spriteBatch = new SpriteBatch();
+        shapeRenderer = new ShapeRenderer();
         Gdx.input.setInputProcessor(stage);
     }
 
