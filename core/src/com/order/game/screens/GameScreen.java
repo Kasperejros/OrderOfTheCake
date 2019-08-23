@@ -7,6 +7,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.IsometricTiledMapRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.order.game.Game;
+import com.order.game.TurnManager;
 import com.order.game.character.Character;
 import com.order.game.character.npc.Enemy;
 import com.order.game.character.playable.Player;
@@ -14,12 +15,15 @@ import com.order.game.map.CoordinatesHelper;
 import com.order.game.map.Position;
 import com.order.game.map.TileManager;
 
+import java.util.ArrayList;
+
 public class GameScreen extends AbstractScreen {
 
     private TiledMap tiledMap;
     private TileManager tileManager;
     private Player player;
     private Enemy enemy;
+    private ArrayList<Character> characters;
     private Vector3 playerSpawn;
     private Vector3 enemySpawn;
 
@@ -39,6 +43,16 @@ public class GameScreen extends AbstractScreen {
         enemySpawn = new Vector3(11, 6,0);
         enemy = new Enemy(enemySpawn);
 
+        characters = new ArrayList<>();
+        characters.add(player);
+        characters.add(enemy);
+
+        TurnManager.prepareQueue(characters);
+        Gdx.app.log("QUE", String.format("Chars: %s , %s", characters.get(0).name, characters.get(1).name));
+
+
+
+
         Gdx.input.setInputProcessor(this);
     }
 
@@ -50,8 +64,10 @@ public class GameScreen extends AbstractScreen {
         tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
 
-        renderShape(player);
-        renderShape(enemy);
+        for (Character c: characters
+             ) {
+            renderShape(c);
+        }
 
 
     }
@@ -62,7 +78,6 @@ public class GameScreen extends AbstractScreen {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
             shapeRenderer.setColor(1,1,0,1);
             shapeRenderer.rect(c.position.x -32 ,c.position.y ,64,64);
-            //Gdx.app.log("RNDR", String.format("Tile: %s , %s", c.position.x-32, c.position.y));
             shapeRenderer.end();
         } else {
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
@@ -94,7 +109,7 @@ public class GameScreen extends AbstractScreen {
 
         tileManager.highlightTile(cellX,cellY);
         lastTappedTile = new Position(cellX, cellY);
-        Gdx.app.log("RNDR", String.format("Tile: %s , %s", cellX, cellY));
+        //Gdx.app.log("RNDR", String.format("Tile: %s , %s", cellX, cellY));
         return new Position(cellX, cellY);
     }
 }

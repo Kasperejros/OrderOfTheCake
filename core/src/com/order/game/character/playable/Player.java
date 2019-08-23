@@ -7,10 +7,11 @@ import com.order.game.map.CoordinatesHelper;
 
 public class Player extends Character {
 
-    final String name = "Player";
 
     public Player (Vector3 spawnPoint) {
         this.position = CoordinatesHelper.V2toV3(CoordinatesHelper.getTileCenter(spawnPoint));
+        this.speed = 6;
+        this.name = "Player";
     }
 
 

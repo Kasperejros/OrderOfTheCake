@@ -37,8 +37,6 @@ public class CoordinatesHelper {
 
         tileCenter.x = (pt.x + pt.y) * (Game.TILE_WIDTH/2) - Game.TILE_WIDTH/2 - 702;
         tileCenter.y = (-pt.x + pt.y) * (Game.TILE_HEIGHT/2) + Game.TILE_HEIGHT/2 + 288;
-        Gdx.app.log("CRDS", String.format("Tile: %s , %s", pt.x, pt.y));
-        Gdx.app.log("CNTR", String.format("Tile: %s , %s", tileCenter.x, tileCenter.y));
 
         tileCenter.x = (pt.x + pt.y) * (Game.TILE_WIDTH /2) + 64 -832;
         tileCenter.y = (-pt.x + pt.y) * (Game.TILE_HEIGHT /2) + 32 +288;

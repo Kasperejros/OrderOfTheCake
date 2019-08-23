@@ -6,8 +6,11 @@ import com.order.game.map.CoordinatesHelper;
 
 public class Enemy extends Character {
 
+
     public Enemy (Vector3 spawnPoint) {
         this.position = CoordinatesHelper.V2toV3(CoordinatesHelper.getTileCenter(spawnPoint));
+        this.speed = 10;
+        this.name = "Enemy";
     }
 
 }
