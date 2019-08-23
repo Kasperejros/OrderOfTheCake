@@ -48,9 +48,6 @@ public class GameScreen extends AbstractScreen {
         characters.add(enemy);
 
         TurnManager.prepareQueue(characters);
-        Gdx.app.log("QUE", String.format("Chars: %s , %s", characters.get(0).name, characters.get(1).name));
-
-
 
 
         Gdx.input.setInputProcessor(this);
@@ -109,7 +106,6 @@ public class GameScreen extends AbstractScreen {
 
         tileManager.highlightTile(cellX,cellY);
         lastTappedTile = new Position(cellX, cellY);
-        //Gdx.app.log("RNDR", String.format("Tile: %s , %s", cellX, cellY));
         return new Position(cellX, cellY);
     }
 }
