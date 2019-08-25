@@ -9,12 +9,8 @@ public class TurnManager {
 
     public TurnManager(){}
 
-    public static ArrayList<Character> prepareQueue(ArrayList<Character> c){
-
-        ArrayList<Character> queue = c;
-        Collections.sort(queue);
-        return queue;
-
+    public static void prepareQueue(ArrayList<Character> c){
+        Collections.sort(c);
     }
 
 
